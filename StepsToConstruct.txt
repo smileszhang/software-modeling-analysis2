@@ -1,0 +1,66 @@
+
+Steps I am using to Construct this Solution
+===========================================
+
+Define Packages - In Project #2 these are all part of the same process
+----------------------------------------------------------------------
+- Create empty Visual Studio Solution
+- Create default console projects for:
+  - TestHarness
+  - Client
+  - Repository - this is a mock with only a little functionality
+  - LoadAndExecute
+  - ITest
+  - TestDriver
+  - TestedCode
+  - Logger
+  - Messages
+  - BlockingQueue - from Project2HelpF16
+
+Define communication between packages neccessary for testing.  For testing we need to:
+--------------------------------------------------------------------------------------
+- send test requests from Client to TestHarness
+- send test requests from TestHarness to child AppDomains
+- send file requests from TestHarness to Repository, sending path
+- Repository will write files into path supplied from child AppDomain
+- Child AppDomain will send results to TestHarness
+- TestHarness will send results to Client and Logs to Repository
+
+Define important methods, fields and properties,
+providing default methods (mostly empty placeholders):
+------------------------------------------------------
+
+---- Note: These are now out-of-date, especially LoadAndExecute ----
+----       Will update soon                                     ----
+
+- ITest: 
+    bool test()
+    string getLog()
+- ILoadAndTest:
+    void request(string rq)
+    void SetRepoCallback(IRepo repoGateway)
+    void SetClientCallback(IClient clientGateway)
+- IRepo:
+    bool getFiles(string path, string fileList) - fileList is comma separated list of files
+    void sendLog(string log)
+- IClient:
+    void sendResults(string result)
+- TestHarness:
+    void processMessages()         get requests from inQ and for each request create AppDomain 
+    bool createChildAppDomain()
+    bool test(string testRequest)  send testRequest to child AppDomain for parsing and testing
+    void 
+    - BlockingQueue<string> inQ;   client posts requests to this property
+- Client: 
+    Client(TestHarness th)
+    bool sendFiles()               called by client main to copy files to Repository folder
+    bool loadQueue(string path);   called by Client main to load TestRequests into TestHarness inQ;
+    bool startTesting()            called by Client main to enter TestHarness processing
+    void processResults()          called by Client main for each test reply
+    - TestHarness th_;  provides access to inQ property
+- LoadAndExecute:
+    bool parseRequest(string testRequest)
+    bool getFiles()                get files from Repository
+                                   Will create directory and send path and file list to Repository
+    doTests()                      for each test in request run tests, log, and return results
+      

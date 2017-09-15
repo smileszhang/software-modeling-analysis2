@@ -1,0 +1,37 @@
+ToDo:
+===========================================================
+- Interfaces:
+  - The most important interfaces pass messages.  That should be
+    expanded to all communication between Clients, TestHarness, 
+    and Repository to prepare for Project #4
+- Logging
+  - enable flushing of child AppDomain logger from primary
+    AppDomain via a remote object
+- TestCode
+  - replace all test stub code with TestPackageName class that implements ITest
+  - Teststub mains now create an instance and call its test() method
+  - Add these to the Repository directory to load into TestHarness
+  - so far this has just been done with a partial test of the logger
+- Cleanup code
+  - refactor LoadAndTest class into a Load class and a Test class
+Done:
+===========================================================
+- Add postbuild to copy test dlls into repository directory
+- TestHarness
+  - create test directory with author-date key
+- Repository
+  - copy code to child AppDomain test directory
+- Logging
+  - log into blocking queue, use child thread to write logs
+  - support Tees
+  - replace Demo Console outputs with logged outputs
+- TestExec
+  - demonstrate all functional requirements
+- Repository
+  - provide support for client queries about files and logs
+- TestExec
+  - demonstrate the requirements:
+    - client queries for files and logs 
+    - test part of project code in TestHarness
+- Diagrams
+  - prepare package, class, and activity diagrams

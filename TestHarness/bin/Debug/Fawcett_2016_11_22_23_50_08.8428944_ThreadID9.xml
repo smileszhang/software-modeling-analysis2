@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<testRequest>
+  <test name="test1">
+    <testDriver>testdriver.dll</testDriver>
+    <library>testedcode.dll</library>
+  </test>
+  <test name="test2">
+    <testDriver>td1.dll</testDriver>
+    <library>tc1.dll</library>
+  </test>
+  <test name="test3">
+    <testDriver>anothertestdriver.dll</testDriver>
+    <library>anothertestedcode.dll</library>
+  </test>
+</testRequest>
