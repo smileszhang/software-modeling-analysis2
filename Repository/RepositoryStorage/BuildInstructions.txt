@@ -1,0 +1,15 @@
+Build Instructions
+==================
+To build and run this demo you need to:
+- make sure the properties on the CodeToTest, TestDriver, and TestInterfaces projects are making
+  libraries, not console applications, e.g., right-click on project in Solution Explorer, select 
+  properties > Applications > Output Type and set to class library
+- TestDriver needs a reference for CodeToTest, e.g., right-click on References in the TestDriver projects,
+  then check the corresponding CodeToTest project
+- Both TestDrivers and TestHarness need a reference to TestInterfaces
+- build the solution by right clicking on solution tab and selecting build
+- copy the dlls from the bin/debug directories in each of the project's code folders
+  for CodeToTest and TestDriver into LoadingTests/Tests folder
+- now you can run
+- every time you change the code in CodeToTest or TestDriver you need to copy the
+  new dlls into the Tests folder

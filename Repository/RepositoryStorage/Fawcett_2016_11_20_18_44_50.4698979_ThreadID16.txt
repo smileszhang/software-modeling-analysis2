@@ -1,0 +1,14 @@
+Fawcett_2016_11_20_18_44_50.4698979_ThreadID16.txt
+-----------------------------
+test1
+passed
+demo test that always passes
+-----------------------------
+test2
+failed
+file not loaded
+-----------------------------
+test3
+failed
+demo test that always fails
+-----------------------------
